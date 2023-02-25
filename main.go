@@ -21,6 +21,8 @@ const (
 	ROUTINE = "Kasih Makan Lele, cek PH dan cek TDS ya 🐟🐟🐟"
 	// Every Week on Friday at 18.01
 	FLOK_CHECK = "Cek Flok di masing-masing kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample."
+	// Every 2 Week on Friday at 07.00
+	HARVEST = "Ada yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besok panen ya"
 )
 
 type telegramMessage struct {
@@ -95,6 +97,8 @@ func main() {
 		message = ROUTINE
 	case "flok_check":
 		message = FLOK_CHECK
+	case "harvest":
+		message = HARVEST
 	}
 
 	for _, chatID := range chatIDs {
