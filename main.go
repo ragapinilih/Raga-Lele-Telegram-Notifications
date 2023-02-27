@@ -18,16 +18,17 @@ const (
 	telegramAPIURL = "https://api.telegram.org/bot%s/sendMessage"
 
 	// Every 07.00 and 18.00
-	ROUTINE = "Kasih Makan Lele, cek PH dan cek TDS ya 🐟🐟🐟. Kalau PH kurang dari 6 berikan EM4 10 tutup botol per meter kubik atau dolomit 200gr per meter kubik"
+	ROUTINE = "Cek *PH*, *TDS*, *Suhu Kolam* dan *beri makan Ikan ya* 🐟🐟🐟\n\n*JIKA PH KURANG DARI 6 JANGAN DIBERI MAKAN!*\n\nPuasakan ikan sampai jendela makan berikutnya dan berikan dolomit 200gr per meter kubik yang dilarutkan terlebih dahulu dalam air sebelum ditebar ke kolam bioflok"
 	// Every Week on Friday at 18.01
-	FLOK_CHECK = "Cek Flok di masing-masing kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample. Kalau flok masih kurang berikan campuran untuk molase, bakteri dan tepung sesuai dengan takaran"
+	FLOK_CHECK = "Cek flok di setiap kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample.\n\n*JIKA FLOK MASIH KURANG BERIKAN CAMPURAN UNTUK MOLASE, BAKTERI DAN TEPUNG SESUAI DENGAN TAKARAN!*\n\nMolase 250ml per meter kubik (didihkan terlebih dahulu)\nBakteri 25 gram per meter kubik\nTepung terigu 250 gram per meter kubik"
 	// Every 2 Week on Friday at 07.00
-	HARVEST = "Ada yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besoknya panen ya"
+	HARVEST = "Ada kolam yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besoknya panen ya"
 )
 
 type telegramMessage struct {
-	ChatID int64  `json:"chat_id"`
-	Text   string `json:"text"`
+	ChatID    int64  `json:"chat_id"`
+	Text      string `json:"text"`
+	ParseMode string `json:"parse_mode"`
 }
 
 var err error
@@ -38,8 +39,9 @@ var chatIDs []string
 func sendTelegramNotification(botToken string, chatID int64, message string) error {
 	// Create the Telegram message payload
 	telegramMsg := telegramMessage{
-		ChatID: chatID,
-		Text:   message,
+		ChatID:    chatID,
+		Text:      message,
+		ParseMode: "Markdown",
 	}
 
 	// Convert the message payload to a JSON string
