@@ -18,11 +18,11 @@ const (
 	telegramAPIURL = "https://api.telegram.org/bot%s/sendMessage"
 
 	// Every 07.00 and 18.00
-	ROUTINE = "Kasih Makan Lele, cek PH dan cek TDS ya 🐟🐟🐟"
+	ROUTINE = "Kasih Makan Lele, cek PH dan cek TDS ya 🐟🐟🐟. Kalau PH kurang dari 6 berikan EM4 10 tutup botol per meter kubik atau dolomit 200gr per meter kubik"
 	// Every Week on Friday at 18.01
-	FLOK_CHECK = "Cek Flok di masing-masing kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample."
+	FLOK_CHECK = "Cek Flok di masing-masing kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample. Kalau flok masih kurang berikan campuran untuk molase, bakteri dan tepung sesuai dengan takaran"
 	// Every 2 Week on Friday at 07.00
-	HARVEST = "Ada yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besok panen ya"
+	HARVEST = "Ada yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besoknya panen ya"
 )
 
 type telegramMessage struct {
