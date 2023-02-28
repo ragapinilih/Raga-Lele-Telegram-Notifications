@@ -18,7 +18,7 @@ const (
 	telegramAPIURL = "https://api.telegram.org/bot%s/sendMessage"
 
 	// Every 07.00 and 18.00
-	ROUTINE = "Cek *PH*, *TDS*, *Suhu Kolam* dan *beri makan Ikan ya* 🐟🐟🐟\n\n*JIKA PH KURANG DARI 6 JANGAN DIBERI MAKAN!*\n\nPuasakan ikan sampai jendela makan berikutnya dan berikan dolomit 200gr per meter kubik yang dilarutkan terlebih dahulu dalam air sebelum ditebar ke kolam bioflok"
+	ROUTINE = "Cek *PH*, *TDS*, *Suhu Kolam* dan *beri makan Ikan ya* 🐟🐟🐟\n\n*JIKA PH KURANG DARI 6 JANGAN DIBERI MAKAN!*\n\nYang harus dilakukan saat PH kurang dari 6 adalah:\n• Puasakan ikan sampai jendela makan berikutnya\n• Berikan dolomit 200gr per meter kubik yang dilarutkan terlebih dahulu dalam air sebelum ditebar ke kolam bioflok\n• Apabila hujan tidak berhenti berhari-hari, ikan bisa dipuasakan *MAKSIMAL* 3 hari. Lebih dari itu hubungi pemilik kolam"
 	// Every Week on Friday at 18.01
 	FLOK_CHECK = "Cek flok di setiap kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample.\n\n*JIKA FLOK MASIH KURANG BERIKAN CAMPURAN UNTUK MOLASE, BAKTERI DAN TEPUNG SESUAI DENGAN TAKARAN!*\n\nMolase 250ml per meter kubik (didihkan terlebih dahulu)\nBakteri 25 gram per meter kubik\nTepung terigu 250 gram per meter kubik"
 	// Every 2 Week on Friday at 07.00
