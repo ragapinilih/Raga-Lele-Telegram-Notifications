@@ -17,10 +17,21 @@ import (
 const (
 	telegramAPIURL = "https://api.telegram.org/bot%s/sendMessage"
 
+	// Flok Application
+	FLOK_APPLICATION = "\nMolase 250ml per meter kubik (didihkan terlebih dahulu)\nBakteri 25 gram per meter kubik\nTepung terigu 250 gram per meter kubik"
+
+	// Flok is not enough
+	FLOK_NOT_ENOUGH = "Jika flok kurang maka lakukan penambahan flok:" + FLOK_APPLICATION
+	// Flok Overflow
+	FLOK_OVERFLOW = "Jika flok berlebih maka lakukan:\n• Puasakan ikan sampai jendela makan berikutnya\n• Pada jendela makan berikutnya berikan pakan 80% dari biasanya\n• *JIKA NAFSU MAKAN IKAN BERKURANG* buang air dasar kolam kurang sebanyak 10cm dan tambahkan air baru sebanyak yang dibuang"
+
+	// Flok Death
+	FLOK_DEATH = "*JIKA BANYAK FLOK MATI SEGERA CEK FLOK!*"
+
 	// Every 07.00 and 18.00
 	ROUTINE = "Cek *PH*, *TDS*, *Suhu Kolam* dan *beri makan Ikan ya* 🐟🐟🐟\n\n*JIKA PH KURANG DARI 6 JANGAN DIBERI MAKAN!*\n\nYang harus dilakukan saat PH kurang dari 6 adalah:\n• Puasakan ikan sampai jendela makan berikutnya\n• Berikan dolomit 200gr per meter kubik yang dilarutkan terlebih dahulu dalam air sebelum ditebar ke kolam bioflok\n• Apabila hujan tidak berhenti berhari-hari, ikan bisa dipuasakan *MAKSIMAL* 3 hari. Lebih dari itu hubungi pemilik kolam"
 	// Every Week on Friday at 18.01
-	FLOK_CHECK = "Cek flok di setiap kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample.\n\n*JIKA FLOK MASIH KURANG BERIKAN CAMPURAN UNTUK MOLASE, BAKTERI DAN TEPUNG SESUAI DENGAN TAKARAN!*\n\nMolase 250ml per meter kubik (didihkan terlebih dahulu)\nBakteri 25 gram per meter kubik\nTepung terigu 250 gram per meter kubik"
+	FLOK_CHECK = "Cek flok di setiap kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample.\n\n*JIKA FLOK MASIH KURANG BERIKAN CAMPURAN UNTUK MOLASE, BAKTERI DAN TEPUNG SESUAI DENGAN TAKARAN!*\n" + FLOK_APPLICATION
 	// Every 2 Week on Friday at 07.00
 	HARVEST = "Ada kolam yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besoknya panen ya"
 )
@@ -86,7 +97,7 @@ func main() {
 	// Split the string on the comma delimiter
 	chatIDs = strings.Split(chatIDsEnv, ",")
 
-	message_type = flag.String("type", "", "message type is routine or flok_check")
+	message_type = flag.String("type", "", "message type is routine, harvest, flok_check or flok_death")
 
 	flag.Parse()
 
@@ -101,6 +112,12 @@ func main() {
 		message = FLOK_CHECK
 	case "harvest":
 		message = HARVEST
+	case "flok_death":
+		message = FLOK_DEATH
+	case "flok_overflow":
+		message = FLOK_OVERFLOW
+	case "flok_not_enough":
+		message = FLOK_NOT_ENOUGH
 	}
 
 	for _, chatID := range chatIDs {
