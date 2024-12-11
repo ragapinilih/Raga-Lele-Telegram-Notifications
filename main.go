@@ -32,7 +32,17 @@ const (
 	ROUTINE = "Cek *PH*, *TDS*, *Suhu Kolam* dan *beri makan Ikan ya* 🐟🐟🐟\n\n*JIKA PH KURANG DARI 6 JANGAN DIBERI MAKAN!*\n\nYang harus dilakukan saat PH kurang dari 6 adalah:\n• Puasakan ikan sampai jendela makan berikutnya\n• Berikan dolomit 200gr per meter kubik yang dilarutkan terlebih dahulu dalam air sebelum ditebar ke kolam bioflok\n• Apabila hujan tidak berhenti berhari-hari, ikan bisa dipuasakan *MAKSIMAL* 3 hari. Lebih dari itu hubungi pemilik kolam"
 	// Every Week on Friday at 18.01
 	FLOK_CHECK = "Cek flok di setiap kolam. Jangan lupa matikan airasi minimal 5 menit sebelum mengambil sample.\n\n*JIKA FLOK MASIH KURANG BERIKAN CAMPURAN UNTUK MOLASE, BAKTERI DAN TEPUNG SESUAI DENGAN TAKARAN!*\n" + FLOK_APPLICATION
-	// Every 2 Week on Friday at 07.00
+
+	// Every Monday and Thursday
+	CLEAN_PRE_FILTER = "Jadwal hari ini bersihkan *Pre-Filter*"
+
+	// Every 2 weeks on Wednesday
+	CLEAN_MECHANIC_FILTER = "Jadwal hari ini bersihkan *Filter Mekanik*"
+
+	// 2 Times a day every 08.00 and 19.00
+	FEEDING = "Ayo berikan pakan ikan!"
+
+	// Once a month at last day of month at 19.00
 	HARVEST = "Ada kolam yang sudah bisa dipanen? Kalau iya nanti malam makan terakhir, besoknya panen ya"
 )
 
@@ -42,7 +52,6 @@ type telegramMessage struct {
 	ParseMode string `json:"parse_mode"`
 }
 
-var err error
 var message string
 var message_type *string
 var chatIDs []string
@@ -118,6 +127,12 @@ func main() {
 		message = FLOK_OVERFLOW
 	case "flok_not_enough":
 		message = FLOK_NOT_ENOUGH
+	case "clean_pre_filter":
+		message = CLEAN_PRE_FILTER
+	case "clean_mechanic_filter":
+		message = CLEAN_MECHANIC_FILTER
+	case "feeding":
+		message = FEEDING
 	}
 
 	for _, chatID := range chatIDs {
